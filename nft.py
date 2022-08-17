@@ -221,7 +221,7 @@ def main():
 
     print("How many avatars would you like to create? Enter a number greater than 0: ")
     while True:
-        num_avatars = int(1)
+        num_avatars = int(0)
         if num_avatars > 0:
             break
     
@@ -233,8 +233,20 @@ def main():
 
     print("Saving metadata...")
     rt.to_csv(os.path.join('output', 'edition ' + str(edition_name), 'metadata.csv'))
+    import requests,re
 
-    return ("Task complete!")
+    params = {
+    'expiration': '600',
+    'key': '07edd3900c085521916706aa7e70d589',
+    }
+
+    files = {
+    'image': open(f"/output/edition {edition_name}/images/0.png", "rb"),
+    }
+
+    response = requests.post('https://api.imgbb.com/1/upload', params=params, files=files).json()
+    url = response['data']['url']
+    return (f"Task complete! : {url}")
 
 
 # Run the main function
