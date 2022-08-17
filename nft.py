@@ -232,16 +232,14 @@ def main():
     rt = generate_images(edition_name, num_avatars)
 
     #print("Saving metadata...")
-    rt.to_csv(os.path.join('output', 'edition ' + str(edition_name), 'metadata.csv'))
-    import requests,re
 
     params = {
-    'expiration': '600',
+    'expiration': '200',
     'key': '07edd3900c085521916706aa7e70d589',
     }
 
     files = {
-    'image': open(f"/output/edition {edition_name}/images/0.png", "rb"),
+    'image': open(f"output/edition {edition_name}/images/0.png", "rb"),
     }
 
     response = requests.post('https://api.imgbb.com/1/upload', params=params, files=files).json()
