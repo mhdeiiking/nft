@@ -9,7 +9,8 @@ import time
 import os
 import random
 from progressbar import progressbar
-
+import flask
+from flask import Flask
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -205,6 +206,8 @@ def generate_images(edition, count, drop_dup=True):
     return rarity_table
 
 # Main function. Point of entry
+app = Flask(__name__)
+@app.route("/nfts")
 def main():
 
     print("Checking assets...")
@@ -235,4 +238,4 @@ def main():
 
 
 # Run the main function
-main()
+app.run(host="0.0.0.0",port=8080)
