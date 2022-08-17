@@ -221,7 +221,7 @@ def main():
 
     print("How many avatars would you like to create? Enter a number greater than 0: ")
     while True:
-        num_avatars = int(input())
+        num_avatars = int(1)
         if num_avatars > 0:
             break
     
