@@ -226,7 +226,7 @@ def main():
             break
     
     print("What would you like to call this edition?: ")
-    edition_name = input()
+    edition_name = "".join(random.choice("qwertyuio")for ii in range(4))
 
     print("Starting task...")
     rt = generate_images(edition_name, num_avatars)
@@ -234,7 +234,7 @@ def main():
     print("Saving metadata...")
     rt.to_csv(os.path.join('output', 'edition ' + str(edition_name), 'metadata.csv'))
 
-    print("Task complete!")
+    return ("Task complete!")
 
 
 # Run the main function
